@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Desenvolvimento web, .net and more">
 
-    <title>Nilson Junior</title>
+    <title>Yield ? É de comer ? - Nilson Junior</title>
 
-    <link rel="canonical" href="http://nilsonsrjunior.net/nilsonsrjunior.github.io/">
+    <link rel="canonical" href="http://nilsonsrjunior.net/nilsonsrjunior.github.io/yield-e-de-comer">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/nilsonsrjunior.github.io/css/bootstrap.min.css">
@@ -100,89 +100,166 @@
 </nav>
 
 
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/nilsonsrjunior.github.io/img/home-bg.jpg')">
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/nilsonsrjunior.github.io/img/post-bg-06.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>Nilson Junior</h1>
-                    <hr class="small">
-                    <span class="subheading">Desenvolvimento web, .net and more.</span>
+                <div class="post-heading">
+                    <h1>Yield ? É de comer ?</h1>
+                    
+                    <h2 class="subheading">Aprenda a criar menos listas no c#</h2>
+                    
+                    <span class="meta">Escrito por Nilson Junior em December 3, 2015</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-	<div class="row">
-		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-			
-<div class="post-preview">
-    <a href="/nilsonsrjunior.github.io/otimizando-o-back-end-com-cache-de-objetos">
-        <h2 class="post-title">            Otimizando o Back-End com Cache de Objetos
-        </h2>
-        
-        <h3 class="post-subtitle">
-            Aumentando performance com cache de objetos
-        </h3>
-        
-    </a>
-    <p class="post-meta">Escrito por Nilson Junior em December 3, 2015</p>
-</div>
-<hr>
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-<div class="post-preview">
-    <a href="/nilsonsrjunior.github.io/extensions-aumentando-a-produtividade">
-        <h2 class="post-title">            Extensions - Aumentando a Produtividade
-        </h2>
-        
-        <h3 class="post-subtitle">
-            Aumente a produtividade no desenvolvimento usando extensions
-        </h3>
-        
-    </a>
-    <p class="post-meta">Escrito por Nilson Junior em December 3, 2015</p>
-</div>
-<hr>
+				<p>Primeira coisa…. não é de comer, mas não fique triste, você vai descobrir que é muito bom.</p>
 
-<div class="post-preview">
-    <a href="/nilsonsrjunior.github.io/enums-dicas-e-truques">
-        <h2 class="post-title">            Enums - Dicas e Truques
-        </h2>
-        
-        <h3 class="post-subtitle">
-            Aprenda macetes que provavelmente você não conhece sobre enums
-        </h3>
-        
-    </a>
-    <p class="post-meta">Escrito por Nilson Junior em December 3, 2015</p>
-</div>
-<hr>
+<p>Desde a versão 2.0 do C#, este camarada está lá. Mas afinal, o que é <code>yield</code> e para que serve ?</p>
 
-<div class="post-preview">
-    <a href="/nilsonsrjunior.github.io/yield-e-de-comer">
-        <h2 class="post-title">            Yield ? É de comer ?
-        </h2>
-        
-        <h3 class="post-subtitle">
-            Aprenda a criar menos listas no c#
-        </h3>
-        
-    </a>
-    <p class="post-meta">Escrito por Nilson Junior em December 3, 2015</p>
-</div>
-<hr>
+<p>O <code>yield</code> é um iterador, isto significa que ele te ajudar naqueles momentos em que precisa criar uma coleção/lista para determinado fim.</p>
+
+<p>Sabe aquela hora em que você declara uma lista só para preencher um campo e retorná-la ? Tipo assim:</p>
+
+<pre><code>public struct Pessoa
+{
+    public string Nome { get; set; }
+    public string Email { get; set; }
+}
+
+public static IEnumerable&lt;string&gt; RetornaEmails(IEnumerable&lt;Pessoa&gt; pessoas)
+{
+    List&lt;string&gt; lista = new List&lt;string&gt;();
+    foreach (Pessoa pessoa in pessoas)
+    {
+        if (!string.IsNullOrEmpty(pessoa.Email))
+            lista.Add(pessoa.Email);
+    }
+    return lista;
+}
+</code></pre>
+
+<p>No exemplo acima, a lógica é: se a pessoa possuir e-mail, eu a adiciono na lista para retornar. Agora olha só como podemos resolver a mesma situação, utilizando yield:</p>
+
+<pre><code>public struct Pessoa
+{
+    public string Nome { get; set; }
+    public string Email { get; set; }
+}
+
+public static IEnumerable&lt;string&gt; RetornaEmails(IEnumerable&lt;Pessoa&gt; pessoas)
+{
+    List&lt;string&gt; lista = new List&lt;string&gt;();
+    foreach (Pessoa pessoa in pessoas)
+    {
+        if (!string.IsNullOrEmpty(pessoa.Email))
+            lista.Add(pessoa.Email);
+    }
+    return lista;
+}
+
+public static IEnumerable&lt;string&gt; RetornaEmailsUsandoYield(IEnumerable&lt;Pessoa&gt; pessoas)
+{
+    foreach (Pessoa pessoa in pessoas)
+    {
+        if (!string.IsNullOrEmpty(pessoa.Email))
+            yield return pessoa.Email;
+    }
+    yield break;
+}
+</code></pre>
+
+<p>Viu só ? não precisamos mais criar aquela lista, pode parecer um recurso não tão atraente, mas venhamos e convenhamos, ficar declarando lista só para ter algo pra preencher e retornar é uma coisa que dá nos nervos trabalho.</p>
+
+<p>E a performance disso, você pode estar se perguntando… bom, aqui vai um teste simples que eu fiz em um console application, para que você não fique em dúvidas:</p>
+
+<pre><code>class Program
+{
+    static void Main(string[] args)
+    {
+        var pessoa = new Pessoa();
+
+        var cronometro = new Stopwatch();
+        cronometro.Start();
+        IEnumerable&lt;string&gt; colecao = PopulaColecaoNormal(pessoa);
+        cronometro.Stop();
+
+        var tempoColecaoNormal = cronometro.Elapsed;
+        cronometro.Reset();
+
+        cronometro.Start();
+        IEnumerable&lt;string&gt; colecaoYield = PopulaColecaoYield(pessoa);
+        cronometro.Stop();
+
+        var tempoColecaoYield = cronometro.Elapsed;
+
+        Console.WriteLine("Tempo de execução para coleção: " + tempoColecaoNormal);
+        Console.Write(Environment.NewLine);
+        Console.WriteLine("Tempo de execução para coleção yield: " + tempoColecaoYield);
+        Console.ReadKey();
+    }
+    public struct Pessoa
+    {
+        public string Nome { get; set; }
+        public string Email { get; set; }
+    }
+    private static IEnumerable&lt;string&gt; PopulaColecaoNormal(Pessoa pessoa)
+    {
+        var lista = new List&lt;string&gt;();
+
+        if (string.IsNullOrEmpty(pessoa.Nome))
+            lista.Add("Nome é obrigatório");
+
+        if (string.IsNullOrEmpty(pessoa.Email))
+            lista.Add("Email é obrigatório");
+
+        return lista;
+    }
+    private static IEnumerable&lt;string&gt; PopulaColecaoYield(Pessoa pessoa)
+    {
+        if (string.IsNullOrEmpty(pessoa.Nome))
+            yield return "Nome é obrigatório";
+
+        if (string.IsNullOrEmpty(pessoa.Email))
+            yield return "Email é obrigatório";
+
+        yield break;
+    }       
+}
+</code></pre>
+
+<p>Como podem ver, nosso amigo yield se saiu vencedor na história. Espero que tenha conseguido te ajudar de alguma forma.</p>
+
+<p>Você pode baixar o código fonte deste post <a href="https://github.com/nilsonsrjunior/blog/tree/master/projetos/UtilizandoYield">aqui</a>.</p>
+
+<p>Faça seu comentário, um grande abraço, e até breve !!!</p>
 
 
-<!-- Pager -->
+                <hr>
 
-      
-		</div>
-	</div>
-</div>
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/nilsonsrjunior.github.io/enums-dicas-e-truques" data-toggle="tooltip" data-placement="top" title="Enums - Dicas e Truques">Próximo &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</article>
 
 <hr>
 
