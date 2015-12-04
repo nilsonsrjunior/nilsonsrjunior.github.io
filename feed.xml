@@ -3,10 +3,10 @@
   <channel>
     <title>Nilson Junior</title>
     <description>Desenvolvimento web, .net and more</description>
-    <link>http://nilsonsrjunior.net/nilsonsrjunior.github.io/</link>
-    <atom:link href="http://nilsonsrjunior.net/nilsonsrjunior.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 04 Dec 2015 13:29:48 -0200</pubDate>
-    <lastBuildDate>Fri, 04 Dec 2015 13:29:48 -0200</lastBuildDate>
+    <link>http://nilsonsrjunior.net/</link>
+    <atom:link href="http://nilsonsrjunior.net/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Fri, 04 Dec 2015 14:30:06 -0200</pubDate>
+    <lastBuildDate>Fri, 04 Dec 2015 14:30:06 -0200</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
     
       <item>
@@ -234,8 +234,8 @@
 &lt;p&gt;Um grande abraço, e até breve !!!&lt;/p&gt;
 </description>
         <pubDate>Thu, 03 Dec 2015 20:45:00 -0200</pubDate>
-        <link>http://nilsonsrjunior.net/nilsonsrjunior.github.io/otimizando-o-back-end-com-cache-de-objetos</link>
-        <guid isPermaLink="true">http://nilsonsrjunior.net/nilsonsrjunior.github.io/otimizando-o-back-end-com-cache-de-objetos</guid>
+        <link>http://nilsonsrjunior.net/otimizando-o-back-end-com-cache-de-objetos</link>
+        <guid isPermaLink="true">http://nilsonsrjunior.net/otimizando-o-back-end-com-cache-de-objetos</guid>
         
         <category>performance</category>
         
@@ -358,8 +358,8 @@ class Program
 &lt;p&gt;Faça seu comentário, um grande abraço, e até breve !!!&lt;/p&gt;
 </description>
         <pubDate>Thu, 03 Dec 2015 20:35:00 -0200</pubDate>
-        <link>http://nilsonsrjunior.net/nilsonsrjunior.github.io/extensions-aumentando-a-produtividade</link>
-        <guid isPermaLink="true">http://nilsonsrjunior.net/nilsonsrjunior.github.io/extensions-aumentando-a-produtividade</guid>
+        <link>http://nilsonsrjunior.net/extensions-aumentando-a-produtividade</link>
+        <guid isPermaLink="true">http://nilsonsrjunior.net/extensions-aumentando-a-produtividade</guid>
         
         <category>csharp</category>
         
@@ -534,8 +534,8 @@ public IEnumerable&amp;lt;Combustivel&amp;gt; Combustiveis
 &lt;p&gt;Faça seu comentário, um grande abraço e até breve !!!&lt;/p&gt;
 </description>
         <pubDate>Thu, 03 Dec 2015 20:25:00 -0200</pubDate>
-        <link>http://nilsonsrjunior.net/nilsonsrjunior.github.io/enums-dicas-e-truques</link>
-        <guid isPermaLink="true">http://nilsonsrjunior.net/nilsonsrjunior.github.io/enums-dicas-e-truques</guid>
+        <link>http://nilsonsrjunior.net/enums-dicas-e-truques</link>
+        <guid isPermaLink="true">http://nilsonsrjunior.net/enums-dicas-e-truques</guid>
         
         <category>csharp</category>
         
@@ -666,8 +666,8 @@ public static IEnumerable&amp;lt;string&amp;gt; RetornaEmailsUsandoYield(IEnumer
 &lt;p&gt;Faça seu comentário, um grande abraço, e até breve !!!&lt;/p&gt;
 </description>
         <pubDate>Thu, 03 Dec 2015 17:28:00 -0200</pubDate>
-        <link>http://nilsonsrjunior.net/nilsonsrjunior.github.io/yield-e-de-comer</link>
-        <guid isPermaLink="true">http://nilsonsrjunior.net/nilsonsrjunior.github.io/yield-e-de-comer</guid>
+        <link>http://nilsonsrjunior.net/yield-e-de-comer</link>
+        <guid isPermaLink="true">http://nilsonsrjunior.net/yield-e-de-comer</guid>
         
         <category>csharp</category>
         
