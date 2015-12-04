@@ -5,8 +5,8 @@
     <description>Desenvolvimento web, .net and more</description>
     <link>http://nilsonsrjunior.net/nilsonsrjunior.github.io/</link>
     <atom:link href="http://nilsonsrjunior.net/nilsonsrjunior.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 04 Dec 2015 13:16:38 -0200</pubDate>
-    <lastBuildDate>Fri, 04 Dec 2015 13:16:38 -0200</lastBuildDate>
+    <pubDate>Fri, 04 Dec 2015 13:29:48 -0200</pubDate>
+    <lastBuildDate>Fri, 04 Dec 2015 13:29:48 -0200</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
     
       <item>
@@ -227,7 +227,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/img/post/testeperformancecacheobjetos.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Bom, por hoje é só… como de costume, você pode baixar o código fonte deste post &lt;a href=&quot;https://github.com/nilsonsrjunior/blog/tree/master/projetos/UsandoCacheDeObjetos&quot;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Bom, por hoje é só… como de costume, você pode baixar o código fonte deste post &lt;a href=&quot;https://github.com/nilsonsrjunior/blog-projects/tree/master/UsandoCacheDeObjetos&quot;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Caso tenha alguma dúvida, por favor, coloque nos comentários.&lt;/p&gt;
 
@@ -353,7 +353,7 @@ class Program
 
 &lt;p&gt;Agora pare e imagine a infinidade de utilidades que podemos encontrar usando extensions. Poxa, tenho certeza que pode facilitar nossas vidas e tornar a escrita de código bem mais rápida.&lt;/p&gt;
 
-&lt;p&gt;Você pode baixar o código fonte deste post &lt;a href=&quot;https://github.com/nilsonsrjunior/blog/tree/master/projetos/Extensions&quot;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Você pode baixar o código fonte deste post &lt;a href=&quot;https://github.com/nilsonsrjunior/blog-projects/tree/master/Extensions&quot;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Faça seu comentário, um grande abraço, e até breve !!!&lt;/p&gt;
 </description>
@@ -529,7 +529,7 @@ public IEnumerable&amp;lt;Combustivel&amp;gt; Combustiveis
 
 &lt;p&gt;Espero muito que tenha te ajudado de alguma forma, nem que só um cadinho. Agradeço por ter lido até o fim, por enquanto é isso!.&lt;/p&gt;
 
-&lt;p&gt;Você pode baixar o código fonte deste post &lt;a href=&quot;https://github.com/nilsonsrjunior/blog/tree/master/projetos/TrabalhandoComEnums&quot;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Você pode baixar o código fonte deste post &lt;a href=&quot;https://github.com/nilsonsrjunior/blog-projects/tree/master/TrabalhandoComEnums&quot;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Faça seu comentário, um grande abraço e até breve !!!&lt;/p&gt;
 </description>
@@ -661,7 +661,7 @@ public static IEnumerable&amp;lt;string&amp;gt; RetornaEmailsUsandoYield(IEnumer
 
 &lt;p&gt;Como podem ver, nosso amigo yield se saiu vencedor na história. Espero que tenha conseguido te ajudar de alguma forma.&lt;/p&gt;
 
-&lt;p&gt;Você pode baixar o código fonte deste post &lt;a href=&quot;https://github.com/nilsonsrjunior/blog/tree/master/projetos/UtilizandoYield&quot;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Você pode baixar o código fonte deste post &lt;a href=&quot;https://github.com/nilsonsrjunior/blog-projects/tree/master/UtilizandoYield&quot;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Faça seu comentário, um grande abraço, e até breve !!!&lt;/p&gt;
 </description>
