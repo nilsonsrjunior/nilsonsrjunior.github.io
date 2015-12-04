@@ -1,4 +1,4 @@
-# Nilson Junior - Desenvolvimento Web, .net and more.
+# http://nilsonsrjunior.net
 
 ## Base Theme
 Theme based [Clean Blog](https://github.com/IronSummitMedia/startbootstrap-clean-blog-jekyll)
