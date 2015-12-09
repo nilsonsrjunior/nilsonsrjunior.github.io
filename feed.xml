@@ -5,9 +5,99 @@
     <description>Desenvolvimento web, .net and more</description>
     <link>http://nilsonsrjunior.net/</link>
     <atom:link href="http://nilsonsrjunior.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 04 Dec 2015 14:30:06 -0200</pubDate>
-    <lastBuildDate>Fri, 04 Dec 2015 14:30:06 -0200</lastBuildDate>
+    <pubDate>Wed, 09 Dec 2015 17:34:04 -0200</pubDate>
+    <lastBuildDate>Wed, 09 Dec 2015 17:34:04 -0200</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
+    
+      <item>
+        <title>ASP.NET Web Api 2 - Parte 1</title>
+        <description>&lt;p&gt;Antes de entendermos o que é um serviço &lt;strong&gt;REST&lt;/strong&gt; e como ele funciona, temos que saber porque ele foi criado e o que havia antes…&lt;/p&gt;
+
+&lt;h1 id=&quot;web-services---o-comeo&quot;&gt;Web Services - O Começo&lt;/h1&gt;
+
+&lt;p&gt;Os chamados web services surgiram para permitir e facilitar a comunicação entre diferentes aplicações que podem estar rodando em diferentes plataformas.&lt;/p&gt;
+
+&lt;p&gt;Quando surgiram, foi especificado um protocolo em que as mensagens deveriam ser encapsuladas e uma linguagem em que deveriam ser descritas as interfaces dos serviços.&lt;/p&gt;
+
+&lt;p&gt;Este procolo de que estamos falando é o &lt;strong&gt;SOAP (Simple Object Access Protocol)&lt;/strong&gt;, e a linguagem em que devem ser descritas as interfaces é chamada de &lt;strong&gt;WSDL (Web Services Description Language)&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Portanto, vamos imaginar que temos que escrever uma carta. Agora, para facilitar a vida do leitor vamos colocar na primeira página uma especificação das coisas que o leitor vai encontrar no conteúdo da carta.&lt;/p&gt;
+
+&lt;p&gt;Por ex.:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Senha da minha conta do banco;&lt;/li&gt;
+  &lt;li&gt;Receita de bolo de cenoura;&lt;/li&gt;
+  &lt;li&gt;Como fazer flexões embaixo d’agua;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Depois de descritas as coisas que o leitor irá encontrar na nossa carta, podemos escrever o conteúdo nas próximas páginas.&lt;/p&gt;
+
+&lt;p&gt;Agora trazendo para os web services, imagine que a especificação do conteúdo da carta é o WSDL e o conteúdo é a mensagem.&lt;/p&gt;
+
+&lt;p&gt;E o SOAP ? Não podemos mandar esta carta para alguém se não a colocarmos em um envelope para que ninguém veja logo de cara o que está escrito certo ?&lt;/p&gt;
+
+&lt;p&gt;Já entendeu né ? O SOAP é o nosso envelope. E o carteiro ? ninguém perguntou do carteiro… foca no exemplo &lt;strike&gt;obg&lt;/strike&gt;.&lt;/p&gt;
+
+&lt;p&gt;Tá. Mas porque estamos falando de Web Services, SOAP, WSDL ? &lt;strike&gt;CARMA TREM!&lt;/strike&gt;&lt;/p&gt;
+
+&lt;p&gt;Então, tudo isso era lindo, mas tinha um problema: &lt;a href=&quot;http://nilsonsrjunior.net/tag/performance/&quot;&gt;PERFORMANCE&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Pois é… aí que os serviços REST entraram com os dois pés no peito.&lt;/p&gt;
+
+&lt;h1 id=&quot;rest-representation-state-transfer&quot;&gt;REST (Representation State Transfer)&lt;/h1&gt;
+
+&lt;p&gt;A arquitetura REST elimina toda a complexidade de uma interface de serviço WSDL, protocolo para as mensagens, focando apenas nos &lt;strong&gt;RECURSOS&lt;/strong&gt;. Ou seja, temos um recurso e diferentes estados.&lt;/p&gt;
+
+&lt;p&gt;Então, na prática, vamos supor que temos a seguinte URI: &lt;a href=&quot;http://abobrinhasvoadoras.com.br/tipo&quot;&gt;http://abobrinhasvoadoras.com.br/tipo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Tendo em mente esta URI, podemos dizer que o nosso recurso nesse caso é o &lt;strong&gt;tipo&lt;/strong&gt; da abobrinha.&lt;/p&gt;
+
+&lt;p&gt;Para o recurso &lt;strong&gt;tipo&lt;/strong&gt; podemos executar várias ações sobre ele, ao todo temos oito métodos fornecidos pelo protocolo HTTP, mas os principais são:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;POST - Cria;&lt;/li&gt;
+  &lt;li&gt;PUT - Atualiza;&lt;/li&gt;
+  &lt;li&gt;GET - Busca;&lt;/li&gt;
+  &lt;li&gt;DELETE - Apaga;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Quando estamos trabalhando com os recursos, temos que saber em que formato estes recursos estão para que possamos utilizá-los. Quem define isso é o &lt;strong&gt;&lt;em&gt;Content-Type&lt;/em&gt;&lt;/strong&gt; que é enviado no cabeçalho da requisição. Os formatos mais utilizados são XML e JSON.&lt;/p&gt;
+
+&lt;p&gt;A arquitetura REST também segue alguns outros princípios, como:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Cliente-Servidor sem estado&lt;/strong&gt;: cada mensagem HTTP deve ser auto-suficiente, ou seja, nada de ficar dependendo de um estado para poder responder uma requisição ou ficar reaproveitando recursos pela metade no meio do caminho. Existem práticas para manter informação como utilização de &lt;strong&gt;[cookies]&lt;/strong&gt;(https://www.google.com.br/webhp?sourceid=chrome-instant&amp;amp;ion=1&amp;amp;espv=2&amp;amp;ie=UTF-8#q=cookies+http) que são permitidas pela arquitetura REST, mas isso é conversa para outro post…;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Cada recurso é unicamente identificado&lt;/strong&gt; e direcionado através da &lt;strong&gt;sua URI&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Para vermos a coisa funcionando na prática, se você não possuir uma ferramenta para fazer requisições como &lt;a href=&quot;http://www.telerik.com/fiddler&quot;&gt;Fiddler&lt;/a&gt; ou &lt;a href=&quot;https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop&quot;&gt;Postman&lt;/a&gt;, use este &lt;a href=&quot;https://resttesttest.com/&quot;&gt;site&lt;/a&gt; e faça uma requisição com o método &lt;code&gt;GET&lt;/code&gt; e o &lt;code&gt;content-type: application/json&lt;/code&gt; para a uri &lt;a href=&quot;https://httpbin.org/ip&quot;&gt;https://httpbin.org/ip&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Você terá este resultado, no formato JSON:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+  &quot;origin&quot;: &quot;189.113.145.110&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Viu só ? não é difícil entender como serviços REST funcionam..&lt;/p&gt;
+
+&lt;p&gt;No próximo episódio desta novela: &lt;strong&gt;&lt;em&gt;Começando com ASP.NET Web Api 2&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Este post não teve código fonte próprio para eu disponibilizar, mas dá uma passada no meu  &lt;a href=&quot;https://github.com/nilsonsrjunior&quot;&gt;github&lt;/a&gt;, tem projetos legais lá.&lt;/p&gt;
+
+&lt;p&gt;Faça seu comentário, um grande abraço, e até breve !!!&lt;/p&gt;
+
+&lt;strike&gt;To be continued...&lt;/strike&gt;
+</description>
+        <pubDate>Mon, 07 Dec 2015 17:00:00 -0200</pubDate>
+        <link>http://nilsonsrjunior.net/aspnet-web-api-2-parte-1</link>
+        <guid isPermaLink="true">http://nilsonsrjunior.net/aspnet-web-api-2-parte-1</guid>
+        
+        <category>web-api</category>
+        
+        
+      </item>
     
       <item>
         <title>Otimizando o Back-End com Cache de Objetos</title>

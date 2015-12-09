@@ -8,11 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Desenvolvimento web, .net and more">
 
-    <title>Yield ? É de comer ? - Nilson Junior</title>
+    <title>ASP.NET Web Api 2 - Parte 1 - Nilson Junior</title>
 
     <link rel="shortcut icon" type="image/png" href="/img/favicon.ico">
 
-    <link rel="canonical" href="http://nilsonsrjunior.net/yield-e-de-comer">
+    <link rel="canonical" href="http://nilsonsrjunior.net/aspnet-web-api-2-parte-1">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -93,11 +93,11 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>Yield ? É de comer ?</h1>
+                    <h1>ASP.NET Web Api 2 - Parte 1</h1>
                     
-                    <h2 class="subheading">Aprenda a criar menos listas no c#</h2>
+                    <h2 class="subheading">Começando com serviços REST</h2>
                     
-                    <span class="meta">Escrito por Nilson Junior em December 3, 2015</span>
+                    <span class="meta">Escrito por Nilson Junior em December 7, 2015</span>
                 </div>
             </div>
         </div>
@@ -110,126 +110,84 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-				<p>Primeira coisa…. não é de comer, mas não fique triste, você vai descobrir que é muito bom.</p>
+				<p>Antes de entendermos o que é um serviço <strong>REST</strong> e como ele funciona, temos que saber porque ele foi criado e o que havia antes…</p>
 
-<p>Desde a versão 2.0 do C#, este camarada está lá. Mas afinal, o que é <code>yield</code> e para que serve ?</p>
+<h1 id="web-services---o-comeo">Web Services - O Começo</h1>
 
-<p>O <code>yield</code> é um iterador, isto significa que ele te ajudar naqueles momentos em que precisa criar uma coleção/lista para determinado fim.</p>
+<p>Os chamados web services surgiram para permitir e facilitar a comunicação entre diferentes aplicações que podem estar rodando em diferentes plataformas.</p>
 
-<p>Sabe aquela hora em que você declara uma lista só para preencher um campo e retorná-la ? Tipo assim:</p>
+<p>Quando surgiram, foi especificado um protocolo em que as mensagens deveriam ser encapsuladas e uma linguagem em que deveriam ser descritas as interfaces dos serviços.</p>
 
-<pre><code>public struct Pessoa
-{
-    public string Nome { get; set; }
-    public string Email { get; set; }
-}
+<p>Este procolo de que estamos falando é o <strong>SOAP (Simple Object Access Protocol)</strong>, e a linguagem em que devem ser descritas as interfaces é chamada de <strong>WSDL (Web Services Description Language)</strong>.</p>
 
-public static IEnumerable&lt;string&gt; RetornaEmails(IEnumerable&lt;Pessoa&gt; pessoas)
-{
-    List&lt;string&gt; lista = new List&lt;string&gt;();
-    foreach (Pessoa pessoa in pessoas)
-    {
-        if (!string.IsNullOrEmpty(pessoa.Email))
-            lista.Add(pessoa.Email);
-    }
-    return lista;
-}
-</code></pre>
+<p>Portanto, vamos imaginar que temos que escrever uma carta. Agora, para facilitar a vida do leitor vamos colocar na primeira página uma especificação das coisas que o leitor vai encontrar no conteúdo da carta.</p>
 
-<p>No exemplo acima, a lógica é: se a pessoa possuir e-mail, eu a adiciono na lista para retornar. Agora olha só como podemos resolver a mesma situação, utilizando yield:</p>
+<p>Por ex.:</p>
 
-<pre><code>public struct Pessoa
-{
-    public string Nome { get; set; }
-    public string Email { get; set; }
-}
+<ul>
+  <li>Senha da minha conta do banco;</li>
+  <li>Receita de bolo de cenoura;</li>
+  <li>Como fazer flexões embaixo d’agua;</li>
+</ul>
 
-public static IEnumerable&lt;string&gt; RetornaEmails(IEnumerable&lt;Pessoa&gt; pessoas)
-{
-    List&lt;string&gt; lista = new List&lt;string&gt;();
-    foreach (Pessoa pessoa in pessoas)
-    {
-        if (!string.IsNullOrEmpty(pessoa.Email))
-            lista.Add(pessoa.Email);
-    }
-    return lista;
-}
+<p>Depois de descritas as coisas que o leitor irá encontrar na nossa carta, podemos escrever o conteúdo nas próximas páginas.</p>
 
-public static IEnumerable&lt;string&gt; RetornaEmailsUsandoYield(IEnumerable&lt;Pessoa&gt; pessoas)
-{
-    foreach (Pessoa pessoa in pessoas)
-    {
-        if (!string.IsNullOrEmpty(pessoa.Email))
-            yield return pessoa.Email;
-    }
-    yield break;
-}
-</code></pre>
+<p>Agora trazendo para os web services, imagine que a especificação do conteúdo da carta é o WSDL e o conteúdo é a mensagem.</p>
 
-<p>Viu só ? não precisamos mais criar aquela lista, pode parecer um recurso não tão atraente, mas venhamos e convenhamos, ficar declarando lista só para ter algo pra preencher e retornar é uma coisa que dá nos nervos trabalho.</p>
+<p>E o SOAP ? Não podemos mandar esta carta para alguém se não a colocarmos em um envelope para que ninguém veja logo de cara o que está escrito certo ?</p>
 
-<p>E a performance disso, você pode estar se perguntando… bom, aqui vai um teste simples que eu fiz em um console application, para que você não fique em dúvidas:</p>
+<p>Já entendeu né ? O SOAP é o nosso envelope. E o carteiro ? ninguém perguntou do carteiro… foca no exemplo <strike>obg</strike>.</p>
 
-<pre><code>class Program
-{
-    static void Main(string[] args)
-    {
-        var pessoa = new Pessoa();
+<p>Tá. Mas porque estamos falando de Web Services, SOAP, WSDL ? <strike>CARMA TREM!</strike></p>
 
-        var cronometro = new Stopwatch();
-        cronometro.Start();
-        IEnumerable&lt;string&gt; colecao = PopulaColecaoNormal(pessoa);
-        cronometro.Stop();
+<p>Então, tudo isso era lindo, mas tinha um problema: <a href="http://nilsonsrjunior.net/tag/performance/">PERFORMANCE</a>.</p>
 
-        var tempoColecaoNormal = cronometro.Elapsed;
-        cronometro.Reset();
+<p>Pois é… aí que os serviços REST entraram com os dois pés no peito.</p>
 
-        cronometro.Start();
-        IEnumerable&lt;string&gt; colecaoYield = PopulaColecaoYield(pessoa);
-        cronometro.Stop();
+<h1 id="rest-representation-state-transfer">REST (Representation State Transfer)</h1>
 
-        var tempoColecaoYield = cronometro.Elapsed;
+<p>A arquitetura REST elimina toda a complexidade de uma interface de serviço WSDL, protocolo para as mensagens, focando apenas nos <strong>RECURSOS</strong>. Ou seja, temos um recurso e diferentes estados.</p>
 
-        Console.WriteLine("Tempo de execução para coleção: " + tempoColecaoNormal);
-        Console.Write(Environment.NewLine);
-        Console.WriteLine("Tempo de execução para coleção yield: " + tempoColecaoYield);
-        Console.ReadKey();
-    }
-    public struct Pessoa
-    {
-        public string Nome { get; set; }
-        public string Email { get; set; }
-    }
-    private static IEnumerable&lt;string&gt; PopulaColecaoNormal(Pessoa pessoa)
-    {
-        var lista = new List&lt;string&gt;();
+<p>Então, na prática, vamos supor que temos a seguinte URI: <a href="http://abobrinhasvoadoras.com.br/tipo">http://abobrinhasvoadoras.com.br/tipo</a>.</p>
 
-        if (string.IsNullOrEmpty(pessoa.Nome))
-            lista.Add("Nome é obrigatório");
+<p>Tendo em mente esta URI, podemos dizer que o nosso recurso nesse caso é o <strong>tipo</strong> da abobrinha.</p>
 
-        if (string.IsNullOrEmpty(pessoa.Email))
-            lista.Add("Email é obrigatório");
+<p>Para o recurso <strong>tipo</strong> podemos executar várias ações sobre ele, ao todo temos oito métodos fornecidos pelo protocolo HTTP, mas os principais são:</p>
 
-        return lista;
-    }
-    private static IEnumerable&lt;string&gt; PopulaColecaoYield(Pessoa pessoa)
-    {
-        if (string.IsNullOrEmpty(pessoa.Nome))
-            yield return "Nome é obrigatório";
+<ul>
+  <li>POST - Cria;</li>
+  <li>PUT - Atualiza;</li>
+  <li>GET - Busca;</li>
+  <li>DELETE - Apaga;</li>
+</ul>
 
-        if (string.IsNullOrEmpty(pessoa.Email))
-            yield return "Email é obrigatório";
+<p>Quando estamos trabalhando com os recursos, temos que saber em que formato estes recursos estão para que possamos utilizá-los. Quem define isso é o <strong><em>Content-Type</em></strong> que é enviado no cabeçalho da requisição. Os formatos mais utilizados são XML e JSON.</p>
 
-        yield break;
-    }       
+<p>A arquitetura REST também segue alguns outros princípios, como:</p>
+
+<ul>
+  <li><strong>Cliente-Servidor sem estado</strong>: cada mensagem HTTP deve ser auto-suficiente, ou seja, nada de ficar dependendo de um estado para poder responder uma requisição ou ficar reaproveitando recursos pela metade no meio do caminho. Existem práticas para manter informação como utilização de <strong>[cookies]</strong>(https://www.google.com.br/webhp?sourceid=chrome-instant&amp;ion=1&amp;espv=2&amp;ie=UTF-8#q=cookies+http) que são permitidas pela arquitetura REST, mas isso é conversa para outro post…;</li>
+  <li><strong>Cada recurso é unicamente identificado</strong> e direcionado através da <strong>sua URI</strong>.</li>
+</ul>
+
+<p>Para vermos a coisa funcionando na prática, se você não possuir uma ferramenta para fazer requisições como <a href="http://www.telerik.com/fiddler">Fiddler</a> ou <a href="https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop">Postman</a>, use este <a href="https://resttesttest.com/">site</a> e faça uma requisição com o método <code>GET</code> e o <code>content-type: application/json</code> para a uri <a href="https://httpbin.org/ip">https://httpbin.org/ip</a>.</p>
+
+<p>Você terá este resultado, no formato JSON:</p>
+
+<pre><code>{
+  "origin": "189.113.145.110"
 }
 </code></pre>
 
-<p>Como podem ver, nosso amigo yield se saiu vencedor na história. Espero que tenha conseguido te ajudar de alguma forma.</p>
+<p>Viu só ? não é difícil entender como serviços REST funcionam..</p>
 
-<p>Você pode baixar o código fonte deste post <a href="https://github.com/nilsonsrjunior/blog-projects/tree/master/UtilizandoYield">aqui</a>.</p>
+<p>No próximo episódio desta novela: <strong><em>Começando com ASP.NET Web Api 2</em></strong>.</p>
+
+<p>Este post não teve código fonte próprio para eu disponibilizar, mas dá uma passada no meu  <a href="https://github.com/nilsonsrjunior">github</a>, tem projetos legais lá.</p>
 
 <p>Faça seu comentário, um grande abraço, e até breve !!!</p>
+
+<strike>To be continued...</strike>
 
 
         <div id="disqus_thread"></div>
@@ -250,10 +208,10 @@ public static IEnumerable&lt;string&gt; RetornaEmailsUsandoYield(IEnumerable&lt;
 
                 <ul class="pager">
                     
-                    
-                    <li class="next">
-                        <a href="/enums-dicas-e-truques" data-toggle="tooltip" data-placement="top" title="Enums - Dicas e Truques">Próximo &rarr;</a>
+                    <li class="previous">
+                        <a href="/otimizando-o-back-end-com-cache-de-objetos" data-toggle="tooltip" data-placement="top" title="Otimizando o Back-End com Cache de Objetos">&larr; Anterior</a>
                     </li>
+                    
                     
                 </ul>
 
