@@ -1,6 +1,6 @@
 /*!
- * Clean Blog v1.0.0 (http://startbootstrap.com)
- * Copyright 2015 Start Bootstrap
+ * Nilson Junior Blog v1.0.0 (http://nilsonsrjunior.net)
+ * Copyright 2015 Nilson Junior
  * Licensed under Apache 2.0 (https://github.com/IronSummitMedia/startbootstrap/blob/gh-pages/LICENSE)
  */
 
