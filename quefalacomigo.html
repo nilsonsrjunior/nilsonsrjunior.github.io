@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="/css/prism.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/clean-blog.css">
+    <link rel="stylesheet" href="/css/nilson-junior-blog.css">
 
     <!-- Pygments Github CSS -->
     <link rel="stylesheet" href="/css/syntax.css">
@@ -123,7 +123,8 @@
 <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
 <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
 <!-- NOTE: To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
-<form name="sentMessage" id="contactForm" novalidate="">
+<form method="POST" novalidate="">
+    <input type="hidden" name="_subject" value="Contato - nilsonsrjunior.net" />
     <div class="row control-group">
         <div class="form-group col-xs-12 floating-label-form-group controls">
             <label>Nome</label>
@@ -134,21 +135,14 @@
     <div class="row control-group">
         <div class="form-group col-xs-12 floating-label-form-group controls">
             <label>Email</label>
-            <input type="email" class="form-control" placeholder="Endereço de email" id="email" required="" data-validation-required-message="Por favor, digite seu email." />
-            <p class="help-block text-danger"></p>
-        </div>
-    </div>
-    <div class="row control-group">
-        <div class="form-group col-xs-12 floating-label-form-group controls">
-            <label>Telefone</label>
-            <input type="tel" class="form-control" placeholder="Telefone" id="phone" required="" data-validation-required-message="Por favor, digite seu telefone." />
+            <input type="email" name="_replyto" class="form-control" placeholder="Endereço de email" id="email" required="" data-validation-required-message="Por favor, digite seu email." />
             <p class="help-block text-danger"></p>
         </div>
     </div>
     <div class="row control-group">
         <div class="form-group col-xs-12 floating-label-form-group controls">
             <label>Mensagem</label>
-            <textarea rows="5" class="form-control" placeholder="Mensagem" id="message" required="" data-validation-required-message="Por favor, digite a mensagem."></textarea>
+            <textarea rows="5" name="body" class="form-control" placeholder="Mensagem" id="message" required="" data-validation-required-message="Por favor, digite a mensagem."></textarea>
             <p class="help-block text-danger"></p>
         </div>
     </div>
@@ -231,7 +225,7 @@
 <script src="/js/prism.js "></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="/js/clean-blog.min.js "></script>
+<script src="/js/nilson-junior-blog.min.js "></script>
 
 
 </body>
