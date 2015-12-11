@@ -135,7 +135,7 @@ hr.small {
 }
 .intro-header {
   background: no-repeat center center;
-  background-color: #808080;
+  background-color: #009cde;
   background-attachment: scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -400,4 +400,8 @@ img::-moz-selection {
 }
 body {
   webkit-tap-highlight-color: #0085a1;
+}
+#imgNilsonJunior {
+  float: left;
+  margin-right: 15px;
 }
